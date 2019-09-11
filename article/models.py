@@ -26,3 +26,6 @@ class Article(models.Model):
 class Tag(models.Model):
     title = models.CharField(max_length=20)
     slug = models.SlugField(max_length=20)
+
+    def __str__(self):
+        return self.title
