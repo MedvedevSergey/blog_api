@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
@@ -9,7 +11,7 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
     image = models.ImageField(upload_to='article/', blank=True, null=True)
-    author = models.ForeignKey('auth.User', blank=True, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField('Tag', blank=True)
 
     @property
