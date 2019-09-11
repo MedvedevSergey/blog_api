@@ -9,7 +9,7 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     article = models.ForeignKey('article.Article', on_delete=models.CASCADE,
                                 related_name="comments")
-    parent = models.ForeignKey('self', blank=True, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.article.title
