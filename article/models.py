@@ -12,6 +12,10 @@ class Article(models.Model):
     author = models.ForeignKey('auth.User', blank=True, null=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField('Tag', blank=True)
 
+    @property
+    def comment_count(self):
+        return self.comments.count()
+
     def __str__(self):
         return f'{self.title}'
 

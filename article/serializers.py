@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, IntegerField
 from .models import Article, Tag
 
 
@@ -11,6 +11,7 @@ class TagSerializer(ModelSerializer):
 
 class ArticleSerializer(ModelSerializer):
     tags = TagSerializer(many=True)
+    comment_count = IntegerField()
 
     class Meta:
         model = Article
